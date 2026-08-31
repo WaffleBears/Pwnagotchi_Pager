@@ -1,0 +1,42 @@
+{
+  "Copper": {
+    "bg": "#140f0c",
+    "panel": "#261c15",
+    "chip": "#32261d",
+    "line": "#4a382b",
+    "edge": "#8a5a33",
+    "text": "#f2e3d5",
+    "label": "#a08874",
+    "dim": "#7a6353",
+    "title": "#f2e3d5",
+    "face": "#ff9d4d",
+    "accent": "#ff9d4d",
+    "selected": "#ff9d4d",
+    "unselected": "#9c8474",
+    "selbg": "#ff9d4d",
+    "seltext": "#140f0c",
+    "on": "#8fd67a",
+    "off": "#ff6b5e",
+    "warning": "#ffd166"
+  },
+  "Arctic": {
+    "bg": "#0c1418",
+    "panel": "#16242b",
+    "chip": "#1e3038",
+    "line": "#2d4650",
+    "edge": "#3f8fa6",
+    "text": "#e4f1f5",
+    "label": "#8fabb5",
+    "dim": "#5f7c86",
+    "title": "#e4f1f5",
+    "face": "#7fe3ff",
+    "accent": "#7fe3ff",
+    "selected": "#7fe3ff",
+    "unselected": "#8fabb5",
+    "selbg": "#7fe3ff",
+    "seltext": "#0c1418",
+    "on": "#6fe0b0",
+    "off": "#ff7a8a",
+    "warning": "#ffc36b"
+  }
+}
