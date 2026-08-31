@@ -251,3 +251,6 @@ pwnagotchi_pager/
 ```
 
 Fonts are JetBrains Mono and Inter, both SIL OFL 1.1; see `fonts/README.md`.
+
+
+A word of acknowledgement. This repo was started as a bug fix and feature add to https://github.com/pineapple-pager-projects/pineapple_pager_pagergotchi. However, given the divergence in approach, the near total rewrite and the large amount of features added, it seemed prudent to break it off into it's own project. All that said, I just wanted to acknowledge the inspiration and beginnings of the idea.
