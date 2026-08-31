@@ -74,7 +74,7 @@ because `/overlay` has only about 31 MB free:
 
 ```sh
 opkg update
-opkg -d mmc install python3 python3-ctypes
+opkg -d mmc install python3 python3-ctypes hcxtools hcxdumptool
 ```
 
 Checking for it over SSH afterwards will lie to you: the SD card is only added
