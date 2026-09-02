@@ -74,7 +74,7 @@ because `/overlay` has only about 31 MB free:
 
 ```sh
 opkg update
-opkg -d mmc install python3 python3-ctypes
+opkg -d mmc install python3 python3-ctypes hcxtools hcxdumptool
 ```
 
 Checking for it over SSH afterwards will lie to you: the SD card is only added
@@ -251,3 +251,8 @@ pwnagotchi_pager/
 ```
 
 Fonts are JetBrains Mono and Inter, both SIL OFL 1.1; see `fonts/README.md`.
+
+
+A word of acknowledgement. This repo was started as a bug fix and feature add to https://github.com/pineapple-pager-projects/pineapple_pager_pagergotchi. However, given the divergence in approach, the near total rewrite and the large amount of features added, it seemed prudent to break it off into it's own project. All that said, I just wanted to acknowledge the inspiration and beginnings of the idea.
+
+NOTE: This is an academic project and is NOT intended to be used in any illegal manner. Know your local laws and be certain to adhere to them. I make no claims of legality in use. YOU are responsible for using this.
