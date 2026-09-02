@@ -24,7 +24,7 @@ POOL_REFRESH_SECS = 120
 OUTCOME_DELAY = captures.MIN_CONVERT_AGE + BACKLOG_EVERY + SETTLE_SLACK
 PINEAPD_SETTLE = 6
 MAX_RECLAIM_TRIES = 3
-OUR_CAPTURES = ('pmkid_', 'sweep_')
+OUR_CAPTURES = ('hcxdump_', 'pmkid_', 'sweep_')
 
 NORMAL = 'normal'
 LOW = 'low'

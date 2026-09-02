@@ -26,6 +26,8 @@ EMPTY_CAPTURE_LIFE = 6 * 3600
 MAX_ESSID_HEX = 64
 MAX_CONVERT_TRIES = 3
 MAX_EAPOL_HEX = 512
+EAPOL_NONCE_START = 34
+EAPOL_NONCE_END = 98
 _HEX_DIGITS = frozenset('0123456789abcdefABCDEF')
 
 _convert_lock = threading.Lock()
@@ -91,6 +93,11 @@ def _message_pair(s):
     return int(s, 16)
 
 
+def _blob_nonce_set(blob):
+    nonce = blob[EAPOL_NONCE_START:EAPOL_NONCE_END]
+    return len(nonce) == EAPOL_NONCE_END - EAPOL_NONCE_START and nonce.strip('0') != ''
+
+
 def _fmt_mac(raw):
     return ':'.join(raw[i:i + 2] for i in range(0, 12, 2))
 
@@ -122,7 +129,8 @@ def parse_line(line):
         pair = _message_pair(parts[8]) if len(parts) >= 9 else None
         crackable = (pair is not None and _is_hash(parts[2], 32)
                      and _is_hash(parts[6], 64)
-                     and _is_hex_bytes(parts[7], MAX_EAPOL_HEX))
+                     and _is_hex_bytes(parts[7], MAX_EAPOL_HEX)
+                     and _blob_nonce_set(parts[7]))
         strong = crackable and named and (pair & PAIR_MASK) != M1M2
     else:
         crackable = False
@@ -485,6 +493,14 @@ def run_hcxpcapngtool(source, target, timeout=CONVERT_TIMEOUT, csv=None):
             return None
 
 
+def _write_signature(path, signature):
+    try:
+        with open(path, 'w') as fh:
+            fh.write(signature)
+    except OSError:
+        pass
+
+
 def sweep_partials(path, older_than=3600):
     cutoff = time.time() - older_than
     for junk in glob.glob(os.path.join(path, '*.part')):
@@ -595,11 +611,7 @@ def _convert_pcaps(path, limit, min_age, budget, extra=()):
             converted += 1
             _drop(marker, stalled)
         elif outcome is False:
-            try:
-                with open(marker, 'w') as fh:
-                    fh.write(signature)
-            except OSError:
-                pass
+            _write_signature(marker, signature)
             _drop(stalled)
         else:
             _note_stall(stalled, signature, tries + 1)

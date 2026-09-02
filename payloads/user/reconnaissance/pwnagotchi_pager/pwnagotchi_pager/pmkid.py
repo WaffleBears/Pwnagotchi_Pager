@@ -456,7 +456,7 @@ class PmkidHunter:
         self.available = tool_available()
         self._tool_checked = 0.0
         self._lock = threading.Lock()
-        self._dedicated = Capture(out_dir, 'pmkid', scratch_dir)
+        self._dedicated = Capture(out_dir, 'hcxdump', scratch_dir)
         self._sweep = Capture(out_dir, 'sweep', scratch_dir)
         self.security = {}
         self.patience = 1.0
